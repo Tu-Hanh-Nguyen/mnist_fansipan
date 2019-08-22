@@ -2,6 +2,11 @@
 
 ## Setup
 ```sh
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+
+pipx install pipenv
+
 # Install dependencies
 pipenv install --dev
 
@@ -9,6 +14,3 @@ pipenv install --dev
 pipenv run pre-commit install -t pre-commit
 pipenv run pre-commit install -t pre-push
 ```
-
-## Credits
-This package was created with Cookiecutter and the [sourceryai/python-best-practices-cookiecutter](https://github.com/sourceryai/python-best-practices-cookiecutter) project template.
