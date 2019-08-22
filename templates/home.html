@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MNIST Fansipan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+<body>
+    <h1>MNIST Fansipan 2019</h1>
+
+    <canvas id="canvas" width="256" height="256" style="border:5px solid;"></canvas>
+    <div>
+        <input type="button" id="myButton" value="Predict"/>
+        <input type="button" id="clearButton" value="Clear"/>
+    </div>
+
+    <div>
+        <h1 id='result'></h1>
+    </div>
+
+    <script src="static/jquery-3.4.1.min.js"></script>
+    <script src="static/index.js"></script>
+    <script type="text/javascript">
+        $("#myButton").click(function(){
+            $('#result').text('  Predicting...');
+            var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
+            var canvasObj = document.getElementById("canvas");
+            var img = canvasObj.toDataURL('image/jpeg');
+            $.ajax({
+                type: "POST",
+                url: $SCRIPT_ROOT + "/upload/",
+                data: img,
+                success: function(data){
+                    $('#result').text('Predicted Output: ' + data);
+                }
+            });
+        });
+</script>
+</body>
+</html>
