@@ -8,6 +8,7 @@ python_version = "3.7"
 
 [packages]
 flask = "*"
+tensorflow = "==2.0.0-beta1"
 
 [dev-packages]
 black = "==19.3b0"
